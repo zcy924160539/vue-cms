@@ -8,3 +8,9 @@
 # 哈哈哈
 
 ## [开源协议之间有何异同？](https://www.zhihu.com/question/19568896/answer/20907890)
+
+
+## 制作了首页App组件
+1.完成了 Header 区域,使用的是Mint-UI中的 Header 组件
+2.制作底部 Tabber 区域,使用的是MUI的 Tabbar.html
+3.要在中间区域放置一个 router-view 来展示路由组件
