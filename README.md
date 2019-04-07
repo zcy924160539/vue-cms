@@ -13,4 +13,5 @@
 ## 制作了首页App组件
 1.完成了 Header 区域,使用的是Mint-UI中的 Header 组件
 2.制作底部 Tabber 区域,使用的是MUI的 Tabbar.html
+ +购物车字体图标真让我好找,有icons-extra.css样式文件,还有mui-icons-extra.ttf字体文件
 3.要在中间区域放置一个 router-view 来展示路由组件

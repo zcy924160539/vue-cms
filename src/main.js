@@ -12,6 +12,8 @@ import { Header } from 'mint-ui'
 // 导入 MUI 样式 制作底部Tabbar
 import './lib/mui/css/mui.css'
 
+import './lib/mui/css/icons-extra.css'
+
 // 注册这个 Header 组件
 Vue.component(Header.name,Header)
 
