@@ -3,16 +3,16 @@
     <!-- 轮播图区域 -->
     <!-- 由于没有数据接口,这里轮播图只能用本地图片代替 -->
     <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in lunbotuList" :key="item.url">
+      <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
         <img :src="item.img" alt>
       </mt-swipe-item>
     </mt-swipe>
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="/home/newslist">
           <img src="../../images/menu1.png" alt="">
           <div class="mui-media-body">新闻资讯</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
         <a href="#">
@@ -54,13 +54,7 @@ export default {
   data() {
     return {
       // 由于没有数据接口,这里轮播图只能用本地图片代替
-      lunbotuList: [
-        { img: "src/images/01.jpg", url: "01" },
-        { img: "src/images/02.jpg", url: "02" },
-        { img: "src/images/03.jpg", url: "03" },
-        { img: "src/images/04.jpg", url: "04" },
-        { img: "src/images/05.jpg", url: "05" }
-      ]
+      lunbotuList: []
     };
   },
   created() {
@@ -70,17 +64,15 @@ export default {
   methods: {
     getLunbotu() {
       //    由于没有数据接口,这里轮播图只能用本地图片代替
-      //    this.$http.get("http://vue.studyit.io/api/getlunbo").then(result => {
-      //        if(result.body.status === 0){
-      //            // 数据请求成功
-      //            this.lunbotuList = result.body.message;
-      //            Toast('图片加载成功')
-      //        }else {
-      //            // 数据请求失败
-      //            Toast('图片加载失败...')
-      //        }
-      //    })
-      Toast("图片加载成功");
+         this.$http.get("api/getlunbo").then(result => {
+             if(result.body.status === 0){
+                 // 数据请求成功
+                 this.lunbotuList = result.body.message;
+             }else {
+                 // 数据请求失败
+                 Toast('图片加载失败...')
+             }
+         })
     }
   }
 };
