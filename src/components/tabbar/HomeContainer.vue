@@ -1,12 +1,14 @@
 <template>
   <div>
     <!-- 轮播图区域 -->
-    <!-- 由于没有数据接口,这里轮播图只能用本地图片代替 -->
+
     <mt-swipe :auto="4000">
       <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
         <img :src="item.img" alt>
       </mt-swipe-item>
     </mt-swipe>
+
+    <!-- 六宫格区域 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
         <router-link to="/home/newslist">
@@ -15,16 +17,16 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="/home/photolist">
           <img src="../../images/menu2.png" alt="">
           <div class="mui-media-body">图片分享</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="/home/goodslist">
           <img src="../../images/menu3.png" alt="">
           <div class="mui-media-body">商品购买</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
         <a href="#">
