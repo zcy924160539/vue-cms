@@ -3,7 +3,7 @@
     <!-- 顶部 Header区域 -->
 
     <mt-header fixed title="购吗？">
-      <mt-button type="primary" icon="back" slot="left" @click="back">返回</mt-button>
+      <mt-button type="primary" icon="back" slot="left" @click="back" v-show="flag">返回</mt-button>
     </mt-header>
 
     <!-- 动画包裹router-view 区域 -->
@@ -24,7 +24,7 @@
       </router-link>
       <router-link to="/shopcar" class="mui-tab-item-llb">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -39,12 +39,22 @@
 <script>
 export default {
 	data(){
-		return {}
-	},
+		return {
+      flag:false
+    }
+  },
+  created(){
+    this.flag = this.$route.path === '/home' ? false : true;
+  },
   methods: {
     back(){ // 返回按钮点击事件
-		this.$router.go(-1)
-	}
+		  this.$router.go(-1)
+	  }
+  },
+  watch:{
+    '$route.path':function(newVal){
+      this.flag = newVal==='/home'?false:true
+    }
   }
 };
 </script>

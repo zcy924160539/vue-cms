@@ -78,6 +78,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 消除滑动警告
 * {
   touch-action: pan-y;
 }

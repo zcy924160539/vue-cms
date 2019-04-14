@@ -10,7 +10,7 @@
         <div
           class="cmt-title"
         >第{{i+1}}楼&nbsp;&nbsp;用户:{{item.user_name}}&nbsp;&nbsp;发表时间:{{item.add_time | dateFormat}}</div>
-        <div class="cmt-body">{{item.content===''?'此用户甚懒,一直在潜水':item.content}}</div>
+        <div class="cmt-body">{{item.content === undefined?'此用户甚懒,一直在潜水':item.content}}</div>
       </div>
     </div>
 
@@ -52,7 +52,7 @@ export default {
       this.getComments();
     },
     postComment() {
-    // 评论内容不能为空!
+      // 评论内容不能为空!
       if (this.msg.trim().length === 0) {
         return Toast("评论内容不能为空!");
       }
@@ -71,11 +71,11 @@ export default {
               content: this.msg.trim()
             };
             // 置顶 拼接 数组
-            this.comments.unshift(cmt)
+            this.comments.unshift(cmt);
             // 清空文本域
-            this.msg = '';
-          }else{
-              Toast('评论失败！')
+            this.msg = "";
+          } else {
+            Toast("评论失败！");
           }
         });
     }

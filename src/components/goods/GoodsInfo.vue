@@ -109,6 +109,17 @@ export default {
     addToShopcar() {
       // 添加到购物车
       this.ballFlag = !this.ballFlag;
+
+      // 拼接一个要保存到store中的对象car数组里的商品信息对象
+      // { id:商品id,count:要购买的数量,price:商品单价,selected:商品在购物车中是否被选中false}
+      var goodsinfo = {
+        id: this.id,
+        count: this.selectedCount,
+        price: this.goodsinfo.sell_price,
+        selected: true
+      };
+      // 调用 stroe 中的 mutations 来将商品加入到购物车
+      this.$store.commit('addToCar',goodsinfo)
     },
     // 小球去购物车的半场动画的钩子函数
     beforeEnter(el) {
@@ -118,34 +129,35 @@ export default {
     enter(el, done) {
       el.offsetWidth;
 
-
       // getBoundingClientRect()是个DOM 的方法,用于获取矩形左上角在页面中的位置
 
       // 获取小球在页面中的位置
       const ballPosition = this.$refs.ball.getBoundingClientRect();
       // 获取徽标在页面中的位置(这里用DOM较方便一些)
-      const badgePosition = document.querySelector("#badge").getBoundingClientRect();
+      const badgePosition = document
+        .querySelector("#badge")
+        .getBoundingClientRect();
 
-      const xDist= (badgePosition.left - ballPosition.left)
-      const yDist = (badgePosition.top - ballPosition.top)
+      const xDist = badgePosition.left - ballPosition.left;
+      const yDist = badgePosition.top - ballPosition.top;
 
-      el.style.transform = `translate(${xDist}px,${yDist}px)`;// xDist yDist让这两个值为变化的,使得小球动画可以适配不同的分辨率
+      el.style.transform = `translate(${xDist}px,${yDist}px)`; // xDist yDist让这两个值为变化的,使得小球动画可以适配不同的分辨率
       el.style.transition = "all 0.5s cubic-bezier(.37,-0.25,1,.66)";
       done();
     },
     afterEnter(el) {
       this.ballFlag = !this.ballFlag;
     },
-    getSelectedCount(count){
+    getSelectedCount(count) {
       // 当子组件把 选中的数量（count）传递给父组件的时候,把选中的值保存到data（this.selectedCount）上
       this.selectedCount = count;
-      console.log("父组件拿到的数量值="+count)
+      console.log("父组件拿到的数量值=" + count);
     }
   },
   components: {
     swiper,
     numbox
-  },
+  }
 };
 </script>
 
