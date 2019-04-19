@@ -1,15 +1,19 @@
 <template>
-    <div>
-        <h3>search</h3>
-    </div>
+  <div>
+    <mt-search v-model="value" cancel-text="取消" placeholder="搜索"></mt-search>
+  </div>
 </template>
 
 <script>
 export default {
-    
-}
+  data() {
+    return {
+      value: "",
+      result: ""
+    };
+  }
+};
 </script>
 
-<style lang="">
-    
+<style lang="scss" scoped>
 </style>
