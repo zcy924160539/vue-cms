@@ -24,6 +24,7 @@
       </router-link>
       <router-link to="/shopcar" class="mui-tab-item-llb">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+          <!-- 记数小球 -->
           <span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
